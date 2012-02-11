@@ -8,7 +8,7 @@
  */
 ?>
 
-<div id="standard_right_menu" class="widget-area" role="complementary">
+<div class="right widget four_cols" role="complementary">
 
 <?php
 	/* When we call the dynamic_sidebar() function, it'll spit out

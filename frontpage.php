@@ -18,54 +18,44 @@ function custom_excerpt_length($length) {
 }
 add_filter('excerpt_length', 'custom_excerpt_length');
 ?>
-
-  <div id="content" role="main">
-    <div id="left_content">
+	<?php get_sidebar(); ?>
+    <div class="six_cols content">
       <?php
         global $post;
         $featured = get_posts('numberposts=5&category_name=featured');
         $current_news = get_posts('numberposts=10&category_name=aktuelt,featured');
         ?>
-        <div id="featured_holder">
-          <ul>
-          <?php
-          foreach($featured as $post) :
-            setup_postdata($post);
-          ?>          
-          <li>  
-        <div class="featured_news">
-          <div class="featured_image">
-            <?php
-            if ( has_post_thumbnail() ) {
-            ?>
-            <a href="<?php the_permalink(); ?>">
-            	<?php the_post_thumbnail('featured-thumbnail'); ?>
-            </a>
-            <?php
-            } else {
-            ?>
-              <a href="<?php the_permalink(); ?>">
-                <img src="<?php bloginfo('template_directory'); ?>/images/featured_image_missing_<?php echo rand(1,2) ?>.png">
-              </a>
-            <?php
-            }
-            ?>
-          </div>
+		<div id="featured_news">
+			<ul class="all_cols featured news">
+			<?php
+			  foreach($featured as $post) :
+				setup_postdata($post);
+			?>          
+			<li>  
+				<?php if ( has_post_thumbnail() ) {?>
+					<a href="<?php the_permalink(); ?>">
+						<?php the_post_thumbnail('featured-thumbnail'); ?>
+					</a>
+				<?php } else { ?>
+					<a href="<?php the_permalink(); ?>">
+						<img src="<?php bloginfo('template_directory'); ?>/images/featured_image_missing_<?php echo rand(1,2) ?>.png">
+					</a>
+				<?php } ?>
 
-          <a href="<?php the_permalink(); ?>" class="featured_title"><?php the_title(); ?></a>
-          <span class="excerpt">
-            <?php the_excerpt(); ?>
-          </span>
+				<h2><a href="<?php the_permalink(); ?>" class="featured_title"><?php the_title(); ?></a></h2>
+				<span class="excerpt">
+					<?php the_excerpt(); ?>
+				</span>
+				
+			</li>
+			<?php endforeach; ?>
+			</ul>
         </div>
-          </li>
-          <?php endforeach; ?>
-          </ul>
-        </div>
-        
         <?php
         foreach($current_news as $post) :
           setup_postdata($post);
         ?>
+		<!-- refactor todo -->
       <div class="current_news">
         <div class="current_news_image">
           <?php
@@ -92,7 +82,7 @@ add_filter('excerpt_length', 'custom_excerpt_length');
       </div>
         <?php endforeach; ?>
     </div>
-      <?php get_sidebar(); ?>
+      
   </div><!-- #content -->
 
 <?php get_footer(); ?>
