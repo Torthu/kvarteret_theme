@@ -18,8 +18,7 @@ function custom_excerpt_length($length) {
 }
 add_filter('excerpt_length', 'custom_excerpt_length');
 ?>
-	<?php get_sidebar(); ?>
-    <div class="six_cols content">
+    <div class="left six_cols content">
       <?php
         global $post;
         $featured = get_posts('numberposts=5&category_name=featured');
@@ -51,38 +50,26 @@ add_filter('excerpt_length', 'custom_excerpt_length');
 			<?php endforeach; ?>
 			</ul>
         </div>
-        <?php
-        foreach($current_news as $post) :
-          setup_postdata($post);
-        ?>
-		<!-- refactor todo -->
-      <div class="current_news">
-        <div class="current_news_image">
-          <?php
-          if ( has_post_thumbnail() ) {
-            ?>
-            <a href="<?php the_permalink(); ?>">
-            	<?php the_post_thumbnail( 'current-news-thumbnail' ); ?>
-            </a>
-            <?php
-          } else {
-          ?>
-          <a href="<?php the_permalink(); ?>">
-            <img src="<?php bloginfo('template_directory'); ?>/images/current_news_image_missing_<?php echo rand(1,2) ?>.png">
-          </a>
-          <?php
-          }
-          ?>
-        </div>
-        
-        <a href="<?php the_permalink(); ?>" class="current_news_title"><?php the_title(); ?></a>
-        <span class="excerpt">
-          <?php the_excerpt(); ?>
-        </span>
-      </div>
+		<ul class="current_news">
+			<?php
+			foreach($current_news as $post) :
+			  setup_postdata($post);
+			?>
+				<li class="left three_cols">
+					<?php if ( has_post_thumbnail() ) { ?>
+						<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'current-news-thumbnail' ); ?></a>
+					<?php } else { ?>
+						<a href="<?php the_permalink(); ?>">
+							<img src="<?php bloginfo('template_directory'); ?>/images/current_news_image_missing_<?php echo rand(1,2) ?>.png">
+						</a>
+					<?php } ?>
+					<h2><a href="<?php the_permalink(); ?>" class="current_news_title"><?php the_title(); ?></a></h2>
+					<?php the_excerpt(); ?>
+				</li>
         <?php endforeach; ?>
-    </div>
+    </ul>
       
   </div><!-- #content -->
+  <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

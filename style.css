@@ -224,9 +224,12 @@ px      68    160    252    344    436    528    620    712    804    896    */
 	}
 	
 	.three_cols {
-		width: 252px;
-		margin: 24px;
+		width: 30%;
+		padding: 12px;
 	}
+		.six_cols .three_cols {
+			width: 50%;
+		}
 	
 	.four_cols {
 		width: 40%;
@@ -496,16 +499,39 @@ px      68    160    252    344    436    528    620    712    804    896    */
 	}
 		/* frontpage */
 		.content {
-			margin-left: 0;
+			margin: 0;
 		}
+		
+		.current_news {
+			list-style: none;
+			margin:0;
+			padding: 0;
+		}
+			.current_news li {
+				margin-left: 0;
+			}
+				.current_news li h2 {
+					font-size: 26px;
+					line-height: 36px;
+					margin-bottom: 0px;
+				}
+			.current_news li:nth-child(odd) {
+				padding-left: 0;
+				clear:left;
+			}
+			.current_news li:nth-child(even) {
+				padding-right: 0;
+				clear:right;
+			}
+			
+			
 
 		/* pagination for the featured article slider */
 		.carousel-control {
 			display: none;
 		}
 		.carousel-pagination {
-			margin-top: 5px;
-			margin-bottom: 20px;
+			height: 20px;
 			overflow: hidden;
 			text-align:center;
 		}

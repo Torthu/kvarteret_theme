@@ -95,4 +95,4 @@
 		
 		</div><!-- end #navigation_bar -->
 		
-		<div id="body">
+		<div id="body" class="cf">
