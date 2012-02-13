@@ -10,36 +10,21 @@
 
 get_header(); ?>
 
-			<div id="content" role="main">
-				<h1 class="entry-title"><?php echo the_title(); ?></h1>
-				<?php echo dew_agenda_menu_shortcode_handler() ?>
-				<div id="left_content">
-					<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<?php if ( is_front_page() ): ?>
-						<h2 class="entry-title"><?php echo the_title(); ?></h2>
-					<?php else: ?>
-						<!--<h1 class="entry-title"><?php echo the_title(); ?></h1>-->
-					<?php endif ?>
+			<h1 class="entry-title"><?php echo the_title(); ?></h1>
+			<?php echo dew_agenda_menu_shortcode_handler() ?>
+			<div id="post-<?php the_ID(); ?>" class="left six_cols content">
+				<!--<h1 class="entry-title"><?php echo the_title(); ?></h1>-->
 
 <!-- # agenda or ordinary page -->
 
-						<div class="entry-content">
-
-							<?php echo dew_agenda_shortcode_handler(array(
-								'dayspan' => 14
-							)); ?>
-
-						</div>
+				<?php echo dew_agenda_shortcode_handler(array(
+					'dayspan' => 14
+				)); ?>
 
 <!-- #end agenda or ordinary page -->
 
-					</div>
-				  </div>
-
-				<div id="standard_right_menu" class="widget-area" role="complementary">
-					<ul class="xoxo">
-						<?php dynamic_sidebar( 'primary-widget-area' ) ?>
-					</ul>
-				</div>				
-			</div><!-- #content -->
+			</div>
+			<div class="right four_cols widget" role="complementary">
+				<?php dynamic_sidebar( 'primary-widget-area' ) ?>
+			</div>				
 <?php get_footer(); ?>

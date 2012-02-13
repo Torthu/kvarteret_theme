@@ -33,41 +33,22 @@ if ($event_id > 0) {
 }
 
 get_header(); ?>
-
-			<div id="content" role="main">
 				<?php //echo dew_agenda_menu_shortcode_handler() ?>
-				<div id="left_content">
-					<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<?php if ( is_front_page() ) { ?>
-						<h2 class="entry-title"><?php echo $title; ?></h2>
-					<?php } else { ?>
-						<h1 class="entry-title"><?php echo $title; ?></h1>
-					<?php } ?>
+				<h1><?php echo $title; ?></h1>
+				<div id="post-<?php the_ID(); ?>" class="left six_cols content">
 
 <?php if ( $event_id > 0 ): ?>
 <!-- # event page -->
 
-						<div class="entry-content">
-
-						<?php echo dew_fullevent_shortcode_handler (array('event_id' => $event_id, 'no_title' => true, 'exclude_metadata' => true)) ?>
-
-						</div>
+					<?php echo dew_fullevent_shortcode_handler (array('event_id' => $event_id, 'no_title' => true, 'exclude_metadata' => true)) ?>
 
 <!-- # end event page -->
 <?php endif ?>
-
-					</div><!-- end #post-<?php echo the_ID() ?> -->
 				</div><!-- end #left_content -->
 
-				<div id="standard_right_menu" class="widget-area" role="complementary">
-					<ul class="xoxo">
-						<?php if ( !empty($rawEvent) ): ?>
-						<li>
-							<?php do_action('kvarteret_event_detailbox', $rawEvent, $client) ?>
-						</li>
-						<?php endif ?>
-						<?php // dynamic_sidebar( 'primary-widget-area' ) ?>
-					</ul>
+				<div class="right four_cols widget" role="complementary">
+					<?php if ( !empty($rawEvent) ): 
+						do_action('kvarteret_event_detailbox', $rawEvent, $client);
+					endif ?>
 				</div>
-			</div><!-- #content -->
 <?php get_footer(); ?>

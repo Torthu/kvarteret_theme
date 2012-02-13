@@ -43,7 +43,7 @@
 				wp_enqueue_script( 'comment-reply' );
 			wp_head();
 		?>
-		<script src="<?php bloginfo('template_directory'); ?>/javascript/jquery-1.4.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript" charset="utf-8"></script>
 		<script src="<?php bloginfo('template_directory'); ?>/javascript/jquery.slider.js" type="text/javascript" charset="utf-8"></script>
 		<script src="<?php bloginfo('template_directory'); ?>/javascript/application.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
@@ -57,9 +57,24 @@
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			})();
 		</script>
+		
+		<script type="text/javascript">
+			var language = window.navigator.userLanguage || window.navigator.language;
+			//if(language != 'nb' && language != 'no' && language != 'nn-no' && language != 'nb-no' || false) {
+				$("#english_language").prepend("hjghg<div class="message small">English speaking user?</div>");
+			//}
+		</script>
 	</head>
 
 	<body <?php body_class(); ?>>
+		
+		<!--[if IE 6]>
+			<div class="message">
+				<h2>Du bruker en utdatert nettleser</h2>
+				Med mindre du sitter på en jobbdatamaskin (unnskyld) kan du oppdatere din nettleser (til internet explorer 9) eller bytte til en konkurrent slik som (norske) Opera, Google Chrome eller Mozilla Firefox for å se siden slik som den er ment.
+			</div>
+		<![endif]-->
+	
 		<div id="header">
 		
 			<ul id="opening_times" class="left">
@@ -68,7 +83,9 @@
 				<li><strong>Lør</strong> 14:00 - 03:00</li>
 				<li><strong>Søn</strong> Se tider for fotballkamp</li>
 			</ul>
-			
+			<div id="language_selection" class="right">
+				<a href="" id="english_language">English</a>
+			</div>
 			<div id="follow_buttons" class="right">
 				<a href="http://twitter.com/Kvarteret"><img src="http://kvarteret.no/wp-content/themes/kvarteret/images/twitter.png" alt="Twitter" /></a>
 				<a href="http://www.facebook.com/pages/Det-Akademiske-Kvarter/20210537496"><img src="http://kvarteret.no/wp-content/themes/kvarteret/images/facebook.png" alt="Facebook" /></a> 

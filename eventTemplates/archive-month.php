@@ -32,29 +32,19 @@ $title = apply_filters('the_title', $dew_title);
 
 get_header(); ?>
 
-			<div id="content" role="main">
 				<h1 class="entry-title"><?php echo $title ?></h1>
 				<?php echo dew_agenda_menu_shortcode_handler() ?>
-				<div id="left_content">
-					<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<div id="post-<?php the_ID(); ?>" class="left six_cols content">
 
 <!-- # agenda or ordinary page -->
-
-						<div class="entry-content">
-
-							<?php echo dew_agenda_shortcode_handler($config); ?>
-
-						</div>
+					<?php echo dew_agenda_shortcode_handler($config); ?>
 
 <!-- #end agenda or ordinary page -->
 
-					</div>
-				  </div>
+				</div>
 
-				<div id="standard_right_menu" class="widget-area" role="complementary">
-					<ul class="xoxo">
+				<div class="right four_cols widget" role="complementary">
 						<?php dynamic_sidebar( 'primary-widget-area' ) ?>
-					</ul>
 				</div>				
-			</div><!-- #content -->
+
 <?php get_footer(); ?>

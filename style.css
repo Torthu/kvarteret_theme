@@ -71,11 +71,11 @@ a img {border: 0;}
 
 @font-face {
     font-family: 'DeliciousBold';
-    src: url('delicious-bold-webfont.eot');
-    src: url('delicious-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('delicious-bold-webfont.woff') format('woff'),
-         url('delicious-bold-webfont.ttf') format('truetype'),
-         url('delicious-bold-webfont.svg#DeliciousBold') format('svg');
+    src: url('fonts/delicious-bold-webfont.eot');
+    src: url('fonts/delicious-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/delicious-bold-webfont.woff') format('woff'),
+         url('fonts/delicious-bold-webfont.ttf') format('truetype'),
+         url('fonts/delicious-bold-webfont.svg#DeliciousBold') format('svg');
     font-weight: bold;
     font-style: normal;
 
@@ -87,7 +87,7 @@ a img {border: 0;}
 	letter-spacing: -2px;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, .opening_title {
 	font-family: 'BebasNeueRegular', Tahoma, sans-serif;
 
 }
@@ -143,8 +143,8 @@ p {
 
 /* Selection colours (easy to forget) */
 
-::selection 	 	{background: rgb(255,255,158);}
-::-moz-selection 	{background: rgb(255,255,158);}
+::selection 	 	{background: #E5190F;color: #fff;}
+::-moz-selection 	{background: #E5190F; color: #fff;}
 img::selection 		{background: transparent;}
 img::-moz-selection	{background: transparent;}
 body {-webkit-tap-highlight-color: rgb(255,255,158);}
@@ -167,6 +167,9 @@ a {
 		text-decoration: underline;
 	}
 
+ul {
+	list-style-position:inside;
+}
 
 /* 	Convenience classes 
 	------------------- */
@@ -212,16 +215,55 @@ px      68    160    252    344    436    528    620    712    804    896    */
 
 	body {
 		width: 992px;
+
 		padding: 72px 0px 84px;
 		color: rgb(50,50,50);
 		-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
 	}
 	
-	.three_cols, .four_cols, .six_cols, .all_cols {
+	body > .message {
+		margin-top: -48px;
+		margin-bottom: 52px;
+		padding: 24px;
+		background: #FFF38D;
+		border: 1px solid #9E6702;
+	}
+	div .message {
+		border-radius: 5px;
+		background: #3F3F3F;
+		padding: 5px;
+		position: relative;
+		color: #fff;
+		float: left;
+		margin-right: 10px;
+	}
+		div .message:after {
+			border-left: 5px solid #3f3f3f;
+			border-top: 5px solid transparent;
+			border-bottom: 5px solid transparent;
+			position: absolute;
+			top: 50%;
+			right: -5px;
+			margin-top: -5px;
+			content:'';
+		}
+		
+	.two_cols, .three_cols, .four_cols, .six_cols, .all_cols {
 		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 		-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 		box-sizing: border-box;         /* Opera/IE 8+ */
 	}
+	
+	.two_cols {
+		width: 20%;
+		padding: 0px 12px;
+	}
+		.left.two_cols {
+			padding-left: 0;
+		}
+		.right.two_cols {
+			padding-right: 0;
+		}
 	
 	.three_cols {
 		width: 30%;
@@ -238,7 +280,7 @@ px      68    160    252    344    436    528    620    712    804    896    */
 	
 	.six_cols {
 		width: 60%;
-		margin: 0px 24px;
+		padding: 0px 12px;
 	}
 	
 	.all_cols {
@@ -310,6 +352,11 @@ px      68    160    252    344    436    528    620    712    804    896    */
 				float:left;
 				margin-right: 5px;
 			}
+		#header #language_selection {
+			position: absolute;
+			right: 24px;
+			top: 24px;
+		}
 		#header #follow_buttons {
 			width: 154px;
 			position: absolute;
@@ -332,13 +379,13 @@ px      68    160    252    344    436    528    620    712    804    896    */
 		  right: 24px;
 		}
 			#header #search_form form {
-				border: 1px solid #333;
-				border-radius: 15px;
+				
 				padding: 1px;
 			}
 				#header #search_form input {
+					border: 1px solid #aaa;
+					border-radius: 5px;
 					display: inline-block;
-					border: 0;
 					background: transparent;
 					width: 120px;
 					padding-left: 5px;
@@ -372,7 +419,8 @@ px      68    160    252    344    436    528    620    712    804    896    */
 		height: 40px;
 		line-height: 40px;
 		padding: 0px 12px;
-		position: relative;
+		border-top-right-radius: 2px;
+		border-top-left-radius: 2px;
 		background: #f03228; /* Old browsers */
 		background: -moz-linear-gradient(top,  #f03228 0%, #a1140c 100%); /* FF3.6+ */
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f03228), color-stop(100%,#a1140c)); /* Chrome,Safari4+ */
@@ -388,7 +436,7 @@ px      68    160    252    344    436    528    620    712    804    896    */
 			bottom: -24px;
 			left: 0px;
 			border-left: 12px solid transparent;
-			border-top: 12px solid #971C06;
+			border-top: 12px solid #621204;
 			border-bottom: 12px solid transparent;
 			content: '';
 		}
@@ -398,7 +446,7 @@ px      68    160    252    344    436    528    620    712    804    896    */
 			bottom: -24px;
 			right: 0px;
 			border-right: 12px solid transparent;
-			border-top: 12px solid #971C06;
+			border-top: 12px solid #621204;
 			border-bottom: 12px solid transparent;
 			content: '';
 		}
@@ -412,10 +460,12 @@ px      68    160    252    344    436    528    620    712    804    896    */
 			#navigation_bar .navigation.right {
 				margin-right: 15px; /* 24px-9px (due to std a padding) */
 			}
-			#navigation_bar .navigation ul > li {
+			#navigation_bar .navigation > ul > li {
 				display: inline;
 				position: relative;
+				
 			}
+
 				#navigation_bar .navigation li a {
 					color: #fff;
 					display:inline-block;
@@ -423,17 +473,17 @@ px      68    160    252    344    436    528    620    712    804    896    */
 					font-size: 1.05em;
 					padding: 0 9px;
 				}
-					#navigation_bar .navigation ul > li > a {
+					#navigation_bar .navigation > ul > li > a {
 						text-shadow: 0 1px 1px #9C1B14;
 					}
-					#navigation_bar .navigation ul > li.current_page_item a:after {
+					#navigation_bar .navigation > ul > li.current_page_item a:after {
 						position: absolute;
 						bottom: -11px;
 						left: 50%;
-						margin-left: -10px;
-						border-right: 10px solid transparent;
-						border-left: 10px solid transparent;
-						border-bottom: 10px solid #fff;
+						margin-left: -8px;
+						border-right: 8px solid transparent;
+						border-left: 8px solid transparent;
+						border-bottom: 8px solid #fff;
 						content: '';
 					}
 					#navigation_bar .navigation ul > li a:hover {
@@ -486,7 +536,7 @@ px      68    160    252    344    436    528    620    712    804    896    */
 	#body {
 		width: 100%;
 		padding: 24px 24px;
-		margin-bottom: 24px;
+		margin-bottom: 12px;
 		border-bottom-left-radius: 8px;
 		border-bottom-right-radius: 8px;
 		background: #fff;
@@ -494,8 +544,6 @@ px      68    160    252    344    436    528    620    712    804    896    */
 		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 		-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 		box-sizing: border-box;         /* Opera/IE 8+ */
-		
-		min-height: 500px; /* remove after testing */
 	}
 		/* frontpage */
 		.content {
@@ -597,6 +645,42 @@ px      68    160    252    344    436    528    620    712    804    896    */
 			margin-top: 1px; /* dirty bug fix */
 			margin-bottom: 24px;
 		}
+		
+		.single .share h2, .single .follow h2 {
+			color: #fff;
+			background: #3F3F3F;
+			text-align:center;
+		}
+		
+		#opening_hours {
+			clear:both;
+			color: #fff;
+			position: relative;
+			background: rgb(66,66,66); /* Old browsers */
+			background: -moz-linear-gradient(top, rgba(66,66,66,1) 0%, rgba(21,21,21,1) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(66,66,66,1)), color-stop(100%,rgba(21,21,21,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, rgba(66,66,66,1) 0%,rgba(21,21,21,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, rgba(66,66,66,1) 0%,rgba(21,21,21,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, rgba(66,66,66,1) 0%,rgba(21,21,21,1) 100%); /* IE10+ */
+			background: linear-gradient(top, rgba(66,66,66,1) 0%,rgba(21,21,21,1) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#424242', endColorstr='#151515',GradientType=0 ); /* IE6-9 */
+			border-radius: 5px;
+		}	
+			#opening_hours:after {
+				position: absolute;
+				width: 70px;
+				height: 56px;
+				background: url('images/small_penguins_transparent.png') bottom right no-repeat;
+				bottom: 0;
+				right: 20px;
+				content: ' ';
+			}
+			
+			#opening_hours > div {
+				border-right: 1px solid #414141;
+				border-left: 1px solid #161616;
+			}
+			
 
 	
 	/* 	Footer 

@@ -99,58 +99,25 @@ function twentyten_setup() {
 		'primary' => __( 'Primary Navigation', 'twentyten' ),
 	) );
 
-	// This theme allows users to set a custom background
+	// TODO - This theme allows users to set a custom background 
 	add_custom_background();
-
-	// Your changeable header business starts here
-	define( 'HEADER_TEXTCOLOR', '' );
-	// No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
-	define( 'HEADER_IMAGE', '%s/images/headers/path.jpg' );
-
-	// The height and width of your custom header. You can hook into the theme's own filters to change these values.
-	// Add a filter to twentyten_header_image_width and twentyten_header_image_height to change these values.
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'twentyten_header_image_width', 940 ) );
-	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'twentyten_header_image_height', 198 ) );
 
 	// We'll be using post thumbnails for custom header images on posts and pages.
 	// Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
 	set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
-  add_image_size( 'current-news-thumbnail', 271, 145, true );
-  add_image_size( 'featured-thumbnail', 600, 300, true );
-  add_image_size( 'full-thumbnail', 944, 400, true );
-  add_image_size( 'room-thumbnail', 390, 200, true );
-  add_image_size( 'samarbeids-logo', 200, 80 );
 
-	// Don't support text inside the header image.
-	define( 'NO_HEADER_TEXT', true );
+	add_image_size( 'current-news-thumbnail', 290, 150, true );
+	add_image_size( 'featured-thumbnail', 600, 300, true );
+	add_image_size( 'full-thumbnail', 944, 400, true );
+	add_image_size( 'room-thumbnail', 390, 200, true );
+	add_image_size( 'samarbeids-logo', 200, 80 );
 
+
+	
 }
 endif;
 
-if ( ! function_exists( 'twentyten_admin_header_style' ) ) :
-/**
- * Styles the header image displayed on the Appearance > Header admin panel.
- *
- * Referenced via add_custom_image_header() in twentyten_setup().
- *
- * @since Kvarteret 1.0
- */
-function twentyten_admin_header_style() {
-?>
-<style type="text/css">
-/* Shows the same border as on front end */
-#headimg {
-	border-bottom: 1px solid #000;
-	border-top: 4px solid #000;
-}
-/* If NO_HEADER_TEXT is false, you would style the text with these selectors:
-	#headimg #name { }
-	#headimg #desc { }
-*/
-</style>
-<?php
-}
-endif;
+
 
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
@@ -222,18 +189,7 @@ function twentyten_custom_excerpt_more( $output ) {
 }
 add_filter( 'get_the_excerpt', 'twentyten_custom_excerpt_more' );
 
-/**
- * Remove inline styles printed when the gallery shortcode is used.
- *
- * Galleries are styled by the theme in Kvarteret's style.css.
- *
- * @since Kvarteret 1.0
- * @return string The gallery style filter, with the styles themselves removed.
- */
-function twentyten_remove_gallery_css( $css ) {
-	return preg_replace( "#<style type='text/css'>(.*?)</style>#s", '', $css );
-}
-add_filter( 'gallery_style', 'twentyten_remove_gallery_css' );
+
 
 if ( ! function_exists( 'twentyten_comment' ) ) :
 /**
@@ -301,7 +257,7 @@ endif;
 function twentyten_widgets_init() {
 	// Area 1, located at the top of the sidebar.
 	register_sidebar( array(
-		'name' => __( 'Primary Widget Area', 'twentyten' ),
+		'name' => __( 'Sidebar', 'twentyten' ),
 		'id' => 'primary-widget-area',
 		'description' => __( 'The primary widget area', 'twentyten' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
@@ -309,61 +265,8 @@ function twentyten_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
-
-	// Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Secondary Widget Area', 'twentyten' ),
-		'id' => 'secondary-widget-area',
-		'description' => __( 'The secondary widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	// Area 3, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'First Footer Widget Area', 'twentyten' ),
-		'id' => 'first-footer-widget-area',
-		'description' => __( 'The first footer widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	// Area 4, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Second Footer Widget Area', 'twentyten' ),
-		'id' => 'second-footer-widget-area',
-		'description' => __( 'The second footer widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	// Area 5, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Third Footer Widget Area', 'twentyten' ),
-		'id' => 'third-footer-widget-area',
-		'description' => __( 'The third footer widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	// Area 6, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Fourth Footer Widget Area', 'twentyten' ),
-		'id' => 'fourth-footer-widget-area',
-		'description' => __( 'The fourth footer widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+	
+	// egen sidebar for pages, posts?
 }
 /** Register sidebars by running twentyten_widgets_init() on the widgets_init hook. */
 add_action( 'widgets_init', 'twentyten_widgets_init' );

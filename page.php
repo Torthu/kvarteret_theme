@@ -13,10 +13,9 @@
  */
 
 get_header(); ?>
-			<div id="content" role="main">
-        <div id="left_content">
-<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
+        <div class="left six_cols content">
+			<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<?php if ( is_front_page() ) { ?>
 						<h2 class="entry-title"><?php the_title(); ?></h2>
@@ -30,10 +29,8 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 				</div><!-- #post-## -->
 
-<?php endwhile; ?>
-  </div>
-
+			<?php endwhile; ?>
+		</div>
 
 <?php get_sidebar(); ?>
-			</div><!-- #content -->
 <?php get_footer(); ?>
