@@ -33,7 +33,7 @@ if ($festival_id > 0) {
 }
 
 get_header(); ?>
-
+			<?php echo dew_agenda_menu_shortcode_handler() ?>
 			<div id="content" role="main">
 				<?php //echo dew_agenda_menu_shortcode_handler() ?>
 				<div id="left_content">

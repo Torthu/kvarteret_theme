@@ -31,9 +31,9 @@ $dew_title  = 'Events in ' . $month[sprintf('%02d', $queryMonth)] . ' ' . $query
 $title = apply_filters('the_title', $dew_title);
 
 get_header(); ?>
-
-				<h1 class="entry-title"><?php echo $title ?></h1>
 				<?php echo dew_agenda_menu_shortcode_handler() ?>
+				<h1 class="entry-title"><?php echo $title ?></h1>
+				
 				<div id="post-<?php the_ID(); ?>" class="left six_cols content">
 
 <!-- # agenda or ordinary page -->

@@ -31,6 +31,9 @@ get_header(); ?>
 				av <?php
 					$custom_author = get_post_meta($post->ID, "article_author", true);
 					$curauth = get_the_author();
+					
+					$custom_author ? $author = $custom_author : $author = $curauth;
+					
 					if ( $custom_author ) {
 						echo $custom_author;
 					}
@@ -53,46 +56,22 @@ get_header(); ?>
 					<?php the_content(); ?>
 					<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
 				</div><!-- .entry-content -->
-
-			</div>
-				<!--<div id="standard_right_menu" class="widget-area">
-					<!--Publisert <?php echo the_date(); ?> <br />
-					Skrevet av <?php
-						$custom_author = get_post_meta($post->ID, "article_author", true);
-						$curauth = get_the_author();
-						if ( $custom_author ) {
-						  echo $custom_author;
-						}
-						else {
-						  echo $curauth;
-						}
-					?>
-					
-					<h2>Abonner på nytt fra Kvarteret</h2>
-					<ul class="article_feed_icons">
-						<li><a href="http://kvarteret.no/feed">RSS</a></li>
-						<li><a href="https://www.facebook.com/Kvarteret">Facebook</a></li>
-						<li><a href="http://twitter.com/#!/kvarteret">Twitter</a></li>
-					</ul>
-				</div>
 				
+			</div>
 				<?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
-					<div id="entry-author-info">
-						<div id="author-avatar">
-							<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentyten_author_bio_avatar_size', 60 ) ); ?>
-						</div><!-- #author-avatar 
+				<div id="author" class="six_cols center article author content">
+					<h2><?php echo $author ?></h2>
+					<div id="author-avatar">
+						<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentyten_author_bio_avatar_size', 60 ) ); ?>
+					</div><!-- #author-avatar -->
 						<div id="author-description">
 							<h2><?php printf( esc_attr__( 'About %s', 'twentyten' ), get_the_author() ); ?></h2>
 							<?php the_author_meta( 'description' ); ?>
-							<div id="author-link">
-								<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-									<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', 'twentyten' ), get_the_author() ); ?>
-								</a>
-							</div><!-- #author-link	
-						</div><!-- #author-description -->
-					<!-- #entry-author-info -->
-<?php endif; ?>
-				</div><!-- #post-## -->
+						
+
+					</div><!-- #author-description -->
+				</div>
+				<?php endif; ?>
 
 
 <?php endwhile; // end of the loop. ?>

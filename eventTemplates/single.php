@@ -11,6 +11,7 @@
 //require_once('dew_template.php');
 
 // if this is a full event, attach wp_title filter
+//require_once('../../../plugins/dak_event_plugin/dew_shell_classes.php');
 $event_id = 0;
 $event_id = (empty($_GET['event_id'])) ? $wp_query->get('event_id') : $_GET['event_id'];
 $event_id = intval($event_id);
@@ -33,8 +34,18 @@ if ($event_id > 0) {
 }
 
 get_header(); ?>
-				<?php //echo dew_agenda_menu_shortcode_handler() ?>
+				<?php echo dew_agenda_menu_shortcode_handler() ?>
+				<?php
+					$event = new DEW_event($rawEvent);
+					if($event->hasPrimaryPicture()) {
+						$eventPic = DEW_tools::getPicture($event->getPrimaryPicture(), 960, 400);
+					}
+					
+					echo '<img src="'.home_url().'/wp-content/uploads'.$eventPic['relative'].'" alt="" />';
+				?>
+				
 				<h1><?php echo $title; ?></h1>
+				
 				<div id="post-<?php the_ID(); ?>" class="left six_cols content">
 
 <?php if ( $event_id > 0 ): ?>

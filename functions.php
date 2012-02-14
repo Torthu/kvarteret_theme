@@ -104,9 +104,7 @@ function twentyten_setup() {
 
 	// We'll be using post thumbnails for custom header images on posts and pages.
 	// Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
-	set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
-
-	add_image_size( 'current-news-thumbnail', 290, 150, true );
+	add_image_size( 'current-news-thumbnail', 265, 145, true );
 	add_image_size( 'featured-thumbnail', 600, 300, true );
 	add_image_size( 'full-thumbnail', 944, 400, true );
 	add_image_size( 'room-thumbnail', 390, 200, true );

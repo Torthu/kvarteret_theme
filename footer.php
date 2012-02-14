@@ -39,7 +39,7 @@
 						<li>Fre-lør 19:00 - 03:00</li>
 					</ul>
 				</div>
-				<div style="clear:both;"></div>
+				<br style="clear:both;" />
 		</div>
 
 	</div><!-- #body -->

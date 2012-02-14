@@ -275,13 +275,25 @@ px      68    160    252    344    436    528    620    712    804    896    */
 	
 	.four_cols {
 		width: 40%;
-		padding-left: 24px;
+		padding: 0px 12px;
 	}
+		.left.four_cols {
+			padding-left: 0;
+		}
+		.right.four_cols {
+			padding-right: 0;
+		}
 	
 	.six_cols {
 		width: 60%;
 		padding: 0px 12px;
 	}
+		.left.six_cols {
+			padding-left: 0;
+		}
+		.right.six_cols {
+			padding-right: 0;
+		}
 	
 	.all_cols {
 		width: 100%;
@@ -557,6 +569,7 @@ px      68    160    252    344    436    528    620    712    804    896    */
 		}
 			.current_news li {
 				margin-left: 0;
+				float: left;
 			}
 				.current_news li h2 {
 					font-size: 26px;
@@ -569,11 +582,14 @@ px      68    160    252    344    436    528    620    712    804    896    */
 			}
 			.current_news li:nth-child(even) {
 				padding-right: 0;
+				padding-left: 12px;
 				clear:right;
 			}
 			
 			
-
+		ul.featured {
+			list-style: none;
+		}
 		/* pagination for the featured article slider */
 		.carousel-control {
 			display: none;
@@ -602,7 +618,7 @@ px      68    160    252    344    436    528    620    712    804    896    */
 		
 		/* standard widget area */
 		.widget {
-			margin: 0;
+			
 		}
 		
 		
@@ -652,13 +668,47 @@ px      68    160    252    344    436    528    620    712    804    896    */
 			text-align:center;
 		}
 		
+		/* Program */
+		ul.agenda_menu {
+			border-radius: 5px;
+			color: #fff;
+			margin-top: -24px;
+			margin-bottom: 24px;
+			padding: 0 !important; /* overrides plugin css */
+			
+			background: #bbb; /* Old browsers */
+			background: -moz-linear-gradient(top, #fff 0%, #bbb 100%); /* FF3.6+ */
+			background: -webkit-linear-gradient(top, #fff 0%, #bbb 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #fff 0%, #bbb 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #fff 0%, #bbb 100%); /* IE10+ */
+			background: linear-gradient(top, #fff 0%, #bbb 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#bbb',GradientType=0 ); /* IE6-9 */
+		}
+		
+			.agenda_menu li {
+				line-height: 40px !important; /* overrides plugin css */
+				height: 40px !important; /* overrides plugin css */
+				display: inline-block !important;
+				position:relative;
+			}
+				.agenda_menu li.active:after {
+					border-bottom: 8px solid #fff;
+					border-right: 8px solid transparent;
+					border-left: 8px solid transparent;
+					position: absolute;
+					bottom: 0;
+					left: 50%;
+					margin-left: -8px;
+					content: '';
+				}
+		
+		
 		#opening_hours {
 			clear:both;
 			color: #fff;
 			position: relative;
 			background: rgb(66,66,66); /* Old browsers */
 			background: -moz-linear-gradient(top, rgba(66,66,66,1) 0%, rgba(21,21,21,1) 100%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(66,66,66,1)), color-stop(100%,rgba(21,21,21,1))); /* Chrome,Safari4+ */
 			background: -webkit-linear-gradient(top, rgba(66,66,66,1) 0%,rgba(21,21,21,1) 100%); /* Chrome10+,Safari5.1+ */
 			background: -o-linear-gradient(top, rgba(66,66,66,1) 0%,rgba(21,21,21,1) 100%); /* Opera 11.10+ */
 			background: -ms-linear-gradient(top, rgba(66,66,66,1) 0%,rgba(21,21,21,1) 100%); /* IE10+ */
@@ -680,6 +730,12 @@ px      68    160    252    344    436    528    620    712    804    896    */
 				border-right: 1px solid #414141;
 				border-left: 1px solid #161616;
 			}
+				#opening_hours > div.three_cols:nth-child(3){
+					border-right: 0;
+				}
+				#opening_hours > div.three_cols:first-child {
+					border-left: 0;
+				}
 			
 
 	
@@ -728,11 +784,30 @@ px      68    160    252    344    436    528    620    712    */
 		height: 250px;
 	}
 	
-	/* cols */
+	/* 	Cols 
+	------------- */
 	.six_cols {
 		width: 75%;
 	}
+	
+	.home .content.six_cols {
+		width: 100%;
+		padding: 0;
+	}
+
+	.home .widget.four_cols {
+		width: 100%;
+		padding: 0;
+	}
+	.three_cols {
+		width: 50%;
+		padding: 12px 12px;
+	}
 }
+
+	#opening_hours > div {
+		border: 0;
+	}
 
 
 
@@ -751,6 +826,30 @@ px      68    160    252    */
 		padding: 48px 34px 60px;
 	}
 	
+	div:active {
+		background: yellow;
+	}
+	
+	
+	
+	/* 	Cols 
+		------------- */
+	.six_cols {
+		width: 100%;
+		padding: 0;
+	}
+		.six_cols .three_cols {
+			width: 100%;
+		}
+	.four_cols {
+		width: 100%;
+		padding: 0;
+	}
+	.three_cols {
+		width: 100%;
+
+	}
+	
 	/* 	Header styles 
 		------------- */
 	#header:before {
@@ -759,7 +858,63 @@ px      68    160    252    */
 	#header {
 		padding-top: 24px;
 	}
+		#opening_times {
+			display:none;
+		}
+		#header #logo {
+			margin-bottom: 64px;
+		}
+		#header #follow_buttons, #header #search_form {
+			left: 50%;
+			margin-left: -77px;
+		}
+		#header #search_form {
+			margin-left: -64px;
+		}
 	
+	/* 	Navigation styles 
+		----------------- */
+	#navigation_bar {
+		height: auto;
+	}
+	#navigation_bar ul {
+		float:left;
+	}
+	#navigation_bar li {
+		background: red;
+		padding: 5px;
+		border-radius: 5px;
+	}
+	
+	/* 	body styles 
+		------------- */
+	#featured_news {
+		display: none;
+	}
+	.current_news li {
+		border-top: 1px solid #ccc;
+	}
+	.current_news li:nth-child(even) {
+		padding-left: 0;
+	}
+		.current_news img {
+			margin-left: -24px;
+		}
+		.current_news h2 {
+			text-align:center;
+		}
+	#opening_hours {
+		padding-bottom: 60px;
+		
+	}
+	#opening_hours:after {
+		left: 50%;
+		margin-left: -28px;
+	}
+	#opening_hours > div {
+		border: 0;
+	}
+
 }
 
 
@@ -779,6 +934,24 @@ px      68    160    252    344    436    */
 		padding: 36px 22px 48px;
 	}
 	
+	/* 	Cols 
+		------------- */
+	.six_cols {
+		width: 100%;
+		padding: 0;
+	}
+		.six_cols .three_cols {
+			width: 100%;
+		}
+	.four_cols {
+		width: 100%;
+		padding: 0;
+	}
+	.three_cols {
+		width: 100%;
+		padding: 12px 12px;
+	}
+	
 	/* 	Header styles 
 		------------- */
 	#header:before {
@@ -787,5 +960,24 @@ px      68    160    252    344    436    */
 	#header {
 		padding-top: 24px;
 	}
+	
+	/* 	body styles 
+		------------- */
+	#featured_news {
+		display: none;
+	}
+	.current_news li:nth-child(even) {
+		padding-left: 0;
+	}
+		.current_news img {
+			display: block;
+			width: 265px;
+			margin: 0 auto;
+		}
+	#opening_hours > div {
+		border: 0;
+	}
+
+}
 	
 }

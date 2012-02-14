@@ -29,6 +29,7 @@ add_filter('excerpt_length', 'custom_excerpt_length');
 			<?php
 			  foreach($featured as $post) :
 				setup_postdata($post);
+				
 			?>          
 			<li>  
 				<?php if ( has_post_thumbnail() ) {?>
@@ -52,10 +53,18 @@ add_filter('excerpt_length', 'custom_excerpt_length');
         </div>
 		<ul class="current_news">
 			<?php
+			$i = 0;
+			$odd_even = "";
 			foreach($current_news as $post) :
 			  setup_postdata($post);
+			  $i++;
+				if($i%2 == 0) {
+					$odd_even = "right";
+				} else {
+					$odd_even = "left";
+				}
 			?>
-				<li class="left three_cols">
+				<li class="three_cols">
 					<?php if ( has_post_thumbnail() ) { ?>
 						<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'current-news-thumbnail' ); ?></a>
 					<?php } else { ?>

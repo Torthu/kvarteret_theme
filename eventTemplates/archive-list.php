@@ -9,9 +9,8 @@
  */
 
 get_header(); ?>
-	
-		<h1><?php echo the_title(); ?></h1>
 		<?php echo dew_agenda_menu_shortcode_handler() ?>
+		<h1><?php echo the_title(); ?></h1>
 		<div class="left six_cols content">
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <!-- # agenda or ordinary page -->

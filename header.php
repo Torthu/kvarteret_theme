@@ -14,6 +14,7 @@
 		<meta charset="utf-8">
 		<link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/favicon.ico" />
 		<link rel="icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/favicon.ico">
+		<meta name="viewport" content="width=device-width">
 		<title><?php
 		/*
 		 * Print the <title> tag based on what is being viewed.
@@ -46,6 +47,8 @@
 		<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript" charset="utf-8"></script>
 		<script src="<?php bloginfo('template_directory'); ?>/javascript/jquery.slider.js" type="text/javascript" charset="utf-8"></script>
 		<script src="<?php bloginfo('template_directory'); ?>/javascript/application.js" type="text/javascript" charset="utf-8"></script>
+		<script src="<?php bloginfo('template_directory'); ?>/javascript/modernizr.js" type="text/javascript" charset="utf-8"></script>
+		
 		<script type="text/javascript">
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-18345888-1']);
