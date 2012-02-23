@@ -661,7 +661,9 @@ px      68    160    252    344    436    528    620    712    804    896    */
 			margin-top: 1px; /* dirty bug fix */
 			margin-bottom: 24px;
 		}
-		
+		.single .share {
+			margin-bottom: 24px;
+		}
 		.single .share h2, .single .follow h2 {
 			color: #fff;
 			background: #3F3F3F;

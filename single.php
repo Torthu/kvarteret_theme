@@ -42,21 +42,23 @@ get_header(); ?>
 					}
 					?>
 			</div>
-			<div class="left two_cols follow">
-				<h2>Følg</h2>
-			</div>
-			<div class="right two_cols share">
-				<h2>Del</h2>
-				<div class="fb-like" style="margin-bottom: 24px;" data-send="false" data-layout="button_count" data-width="79" data-show-faces="true"></div><br />
-				<a href="https://twitter.com/share" class="twitter-share-button" data-via="Kvarteret" data-lang="no">Tweet</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			</div>
+
+			<p class="six_cols center byline">
+				<em><?php the_post_thumbnail_caption(); ?></em>
+			</p>
+			
 			<div class="six_cols center article content">
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<?php the_content(); ?>
 					<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
 				</div><!-- .entry-content -->
 				
+			</div>
+			<div class="six_cols center cf share">
+				<h2>Del</h2>
+				<div class="fb-like" style="float:left;" data-send="false" data-layout="button_count" data-width="79" data-show-faces="true"></div>
+				<a href="https://twitter.com/share" class="twitter-share-button" style="float:left;" data-via="Kvarteret" data-lang="no">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			</div>
 				<?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 				<div id="author" class="six_cols center article author content">
