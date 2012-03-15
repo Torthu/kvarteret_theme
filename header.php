@@ -46,7 +46,6 @@
 		?>
 		<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript" charset="utf-8"></script>
 		<script src="<?php bloginfo('template_directory'); ?>/javascript/jquery.slider.js" type="text/javascript" charset="utf-8"></script>
-		<script src="<?php bloginfo('template_directory'); ?>/javascript/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 		<script src="<?php bloginfo('template_directory'); ?>/javascript/application.js" type="text/javascript" charset="utf-8"></script>
 		<script src="<?php bloginfo('template_directory'); ?>/javascript/modernizr.js" type="text/javascript" charset="utf-8"></script>
 		
