@@ -845,9 +845,7 @@ px      68    160    252    344    436    528    620    712    */
 
 
 
-/*		Mobile Layout: 320px.
-		Gutters: 24px.
-		Outer margins: 34px.
+/*		Mobile Layout: <767px.
 		Inherits styles from: Default Layout.
 ---------------------------------------------
 cols    1     2      3
@@ -856,15 +854,13 @@ px      68    160    252    */
 @media only screen and (max-width: 767px) {
 	
 	body {
-		width: 252px;
-		padding: 48px 34px 60px;
+		width: 100%;
+		padding: 36px 22px 48px;
+		
+		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+		-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+		box-sizing: border-box;         /* Opera/IE 8+ */
 	}
-	
-	div:active {
-		background: yellow;
-	}
-	
-	
 	
 	/* 	Cols 
 		------------- */
@@ -881,12 +877,12 @@ px      68    160    252    */
 	}
 	.three_cols {
 		width: 100%;
-
+		padding: 12px 12px;
 	}
 	
 	/* 	Header styles 
 		------------- */
-	#header:before {
+		#header:before {
 		display:none;
 	}
 	#header {
@@ -905,20 +901,6 @@ px      68    160    252    */
 		#header #search_form {
 			margin-left: -64px;
 		}
-	
-	/* 	Navigation styles 
-		----------------- */
-	#navigation_bar {
-		height: auto;
-	}
-	#navigation_bar ul {
-		float:left;
-	}
-	#navigation_bar li {
-		background: red;
-		padding: 5px;
-		border-radius: 5px;
-	}
 	
 	/* 	body styles 
 		------------- */
@@ -948,68 +930,82 @@ px      68    160    252    */
 	#opening_hours > div {
 		border: 0;
 	}
-
-}
-
-
-
-/*		Wide Mobile Layout: 480px.
-		Gutters: 24px.
-		Outer margins: 22px.
-		Inherits styles from: Default Layout, Mobile Layout.
-------------------------------------------------------------
-cols    1     2      3      4      5
-px      68    160    252    344    436    */
-
-@media only screen and (min-width: 480px) and (max-width: 767px) {
 	
-	body {
-		width: 436px;
-		padding: 36px 22px 48px;
-	}
+	/*	Navigation styles
+		----------------- */
 	
-	/* 	Cols 
-		------------- */
-	.six_cols {
-		width: 100%;
-		padding: 0;
-	}
-		.six_cols .three_cols {
-			width: 100%;
-		}
-	.four_cols {
-		width: 100%;
-		padding: 0;
-	}
-	.three_cols {
-		width: 100%;
-		padding: 12px 12px;
-	}
-	
-	/* 	Header styles 
-		------------- */
-	#header:before {
-		display:none;
-	}
-	#header {
-		padding-top: 24px;
-	}
-	
-	/* 	body styles 
-		------------- */
-	#featured_news {
+	#navigation_bar:before, #navigation_bar:after {
 		display: none;
 	}
-	.current_news li:nth-child(even) {
-		padding-left: 0;
+	#navigation_bar {
+		width: 100%;
+		height: auto;
+		padding: 0;
+		margin:0;
 	}
-		.current_news img {
-			display: block;
-			width: 265px;
-			margin: 0 auto;
+	#navigation_bar .navigation ul {
+			list-style: none;
 		}
-	#opening_hours > div {
-		border: 0;
+			#navigation_bar .navigation.left {
+				margin-left: 0px; /* 24px-9px (due to std a padding) */
+				float:none;
+			}
+			#navigation_bar .navigation.right {
+				margin-right: 0px; /* 24px-9px (due to std a padding) */
+				float:none;
+			}
+			#navigation_bar .navigation > ul > li {
+				display: block;
+				text-align:center;
+				border-bottom: 1px solid #F03228;
+			}
+
+				#navigation_bar .navigation li a {
+					display: block;
+					padding: 0 9px;
+				}
+					#navigation_bar .navigation > ul > li > a {
+						text-shadow: 0 1px 1px #9C1B14;
+					}
+					#navigation_bar .navigation > ul > li.current_page_item a:after {
+						display:none;
+					}
+					#navigation_bar .navigation ul > li a:hover {
+						color: #0D0F0A;
+					}
+				#navigation_bar .navigation ul > li  > ul.sub-menu {
+					display: block;
+					width: auto;
+					position: static;
+					margin-right: 0px;
+					background: inherit;
+					box-shadow: none;
+					border-radius: none;
+				}	
+					/* make sub-menu appear on hover */
+					#navigation_bar .navigation ul > li:hover > ul.sub-menu {
+						display: block;
+					}
+						#navigation_bar .navigation ul > li:hover > ul.sub-menu:before {
+							display:none;
+						}
+					#navigation_bar .navigation ul > li  > ul.sub-menu li, #navigation_bar .navigation ul > li  > ul.sub-menu li a {
+						display: block;
+					}
+						#navigation_bar .navigation ul > li  > ul.sub-menu li:last-child a{
+							border-radius:none;
+						}
+						#navigation_bar .navigation ul > li  > ul.sub-menu li:first-child a{
+							border-radius: none;
+						}
+						#navigation_bar .navigation ul > li  > ul.sub-menu li a:hover{
+							background:transparent;
+							color: inherit;
+						}
+
+	.nav-collapse {
+	overflow: hidden;
+	height: 0;
 	}
 
 }

@@ -46,6 +46,7 @@
 		?>
 		<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript" charset="utf-8"></script>
 		<script src="<?php bloginfo('template_directory'); ?>/javascript/jquery.slider.js" type="text/javascript" charset="utf-8"></script>
+		<script src="<?php bloginfo('template_directory'); ?>/javascript/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 		<script src="<?php bloginfo('template_directory'); ?>/javascript/application.js" type="text/javascript" charset="utf-8"></script>
 		<script src="<?php bloginfo('template_directory'); ?>/javascript/modernizr.js" type="text/javascript" charset="utf-8"></script>
 		
@@ -109,10 +110,13 @@
 		</div><!-- end #header -->
 		
 		<div id="navigation_bar" role="navigation">
-		
-				<?php wp_nav_menu( array( 'container_class' => 'left navigation', 'menu' => 'Nav left' ) ); ?>
-				<?php wp_nav_menu( array( 'container_class' => 'right navigation', 'menu' => 'Nav right' ) ); ?>
-		
+				<div class="nav-collapse">
+					<?php wp_nav_menu( array( 'container_class' => 'left navigation', 'menu' => 'Nav left' ) ); ?>
+					<?php wp_nav_menu( array( 'container_class' => 'right navigation', 'menu' => 'Nav right' ) ); ?>
+				</div>
+				<button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					Nav
+				</button>
 		</div><!-- end #navigation_bar -->
 		
 		<div id="body" class="cf">
