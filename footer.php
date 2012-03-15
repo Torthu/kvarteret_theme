@@ -28,7 +28,7 @@
 					<ul class="opening_hours">
 						<li>Man-ons 11:30 - 23:00</li>
 						<li>Tor-fre 11:30 - 03:00</li>
-						<li>Lør 15:00 - 03:00</li>
+						<li>Lør 19:00 - 03:00</li>
 					</ul>
 				</div>
 				<div class="left three_cols cf">

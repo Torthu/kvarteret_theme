@@ -16,8 +16,10 @@
 	 * then the sidebar simply doesn't exist, so we'll hard-code in
 	 * some default sidebar stuff just in case.
 	 */
+	 
+	echo '<ul class="widget_ul">';
 	if ( ! dynamic_sidebar( 'primary-widget-area' ) ) : ?>
-	
+	</ul>
 
 		<?php endif; // end primary widget area ?>
 		</div><!-- #primary .widget-area -->
@@ -27,7 +29,7 @@
 	if ( is_active_sidebar( 'secondary-widget-area' ) ) : ?>
 
 		<div id="secondary" class="widget-area" role="complementary">
-			<ul class="xoxo">
+			<ul class="widget_ul">
 				<?php dynamic_sidebar( 'secondary-widget-area' ); ?>
 			</ul>
 		</div><!-- #secondary .widget-area -->

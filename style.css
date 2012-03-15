@@ -703,6 +703,38 @@ px      68    160    252    344    436    528    620    712    804    896    */
 					margin-left: -8px;
 					content: '';
 				}
+				
+		.widget_ul {
+			list-style:none;
+		}
+		
+		#featured_news {
+			border-bottom: 1px solid #eee;
+			padding-bottom: 24px;
+			margin-bottom: 12px;
+		}
+			#featured_news .excerpt p {
+				padding: 12px;
+				color: #fff;
+				background: #000;
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+				margin-top: -7px;
+				margin-bottom: 12px;
+			}
+		
+		.featured.news h2 {
+			background: rgba(0,0,0,0.7);
+			position:absolute;
+			bottom:0;
+			padding: 12px;
+			width: 100%;
+			margin-bottom: 7px;
+		}
+			.featured.news h2 a {
+				color: #fff;
+				
+			}
 		
 		
 		#opening_hours {

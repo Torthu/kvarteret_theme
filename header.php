@@ -92,7 +92,7 @@
 			<div id="follow_buttons" class="right">
 				<a href="http://twitter.com/Kvarteret"><img src="http://kvarteret.no/wp-content/themes/kvarteret/images/twitter.png" alt="Twitter" /></a>
 				<a href="http://www.facebook.com/pages/Det-Akademiske-Kvarter/20210537496"><img src="http://kvarteret.no/wp-content/themes/kvarteret/images/facebook.png" alt="Facebook" /></a> 
-				<a href="https://intern.kvarteret.no/events/api/atom/upcomingEvents"><img src="http://kvarteret.no/wp-content/themes/kvarteret/images/rss.png" alt="Upcoming events" /></a> 
+				<a href="http://events.kvarteret.no/api/atom/upcomingEvents"><img src="http://kvarteret.no/wp-content/themes/kvarteret/images/rss.png" alt="Upcoming events" /></a> 
 			</div>
 		
 			<div id="search_form" class="right">

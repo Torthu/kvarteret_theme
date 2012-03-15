@@ -32,17 +32,19 @@ add_filter('excerpt_length', 'custom_excerpt_length');
 				
 			?>          
 			<li>  
-				<?php if ( has_post_thumbnail() ) {?>
-					<a href="<?php the_permalink(); ?>">
-						<?php the_post_thumbnail('featured-thumbnail'); ?>
-					</a>
-				<?php } else { ?>
-					<a href="<?php the_permalink(); ?>">
-						<img src="<?php bloginfo('template_directory'); ?>/images/featured_image_missing_<?php echo rand(1,2) ?>.png">
-					</a>
-				<?php } ?>
+				<div class="wrapper post_thumbnail">
+					<?php if ( has_post_thumbnail() ) {?>
+						<a href="<?php the_permalink(); ?>">
+							<?php the_post_thumbnail('featured-thumbnail'); ?>
+						</a>
+					<?php } else { ?>
+						<a href="<?php the_permalink(); ?>">
+							<img src="<?php bloginfo('template_directory'); ?>/images/featured_image_missing_<?php echo rand(1,2) ?>.png">
+						</a>
+					<?php } ?>
 
-				<h2><a href="<?php the_permalink(); ?>" class="featured_title"><?php the_title(); ?></a></h2>
+					<h2><a href="<?php the_permalink(); ?>" class="featured_title"><?php the_title(); ?></a></h2>
+				</div>
 				<span class="excerpt">
 					<?php the_excerpt(); ?>
 				</span>
