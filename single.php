@@ -26,9 +26,20 @@ get_header(); ?>
 			<h1><?php the_title(); ?></h1>
 		<?php } ?>
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-			<div class="article meta">
-				<?php echo the_date(); ?> - 
-				av <?php
+			<div class="article meta byline">
+				<?php the_post_thumbnail_caption(); ?>
+			</div>
+
+			<div class="two_cols left date meta text_right">
+				<div class="right date_wrap">
+					<span class="bebas day huge right">11</span>
+					<span class="month">Mar</span>
+					<span class="year">2012</span>
+				</div>
+			</div>
+			<div class="two_cols right">
+				<span class="bebas left author huge">av</span>
+				<?php
 					$custom_author = get_post_meta($post->ID, "article_author", true);
 					$curauth = get_the_author();
 					
@@ -42,17 +53,11 @@ get_header(); ?>
 					}
 					?>
 			</div>
-
-			<p class="six_cols center byline">
-				<em><?php the_post_thumbnail_caption(); ?></em>
-			</p>
-			
 			<div class="six_cols center article content">
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<?php the_content(); ?>
 					<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
 				</div><!-- .entry-content -->
-				
 			</div>
 			<div class="six_cols center cf share">
 				<h2>Del</h2>

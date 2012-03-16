@@ -108,14 +108,14 @@
 			
 		</div><!-- end #header -->
 		
-		<div id="navigation_bar" role="navigation">
-				<div class="nav-collapse">
-					<?php wp_nav_menu( array( 'container_class' => 'left navigation', 'menu' => 'Nav left' ) ); ?>
-					<?php wp_nav_menu( array( 'container_class' => 'right navigation', 'menu' => 'Nav right' ) ); ?>
-				</div>
-				<button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-					Nav
-				</button>
+		<div id="navigation_bar" class="cf" role="navigation">
+			<button class="btn btn_navbar_toggle" data-toggle="collapse" data-target=".nav-collapse">
+				Nav
+			</button>
+			<div class="nav-collapse">
+				<?php wp_nav_menu( array( 'container_class' => 'left navigation', 'menu' => 'Nav left' ) ); ?>
+				<?php wp_nav_menu( array( 'container_class' => 'right navigation', 'menu' => 'Nav right' ) ); ?>
+			</div>
 		</div><!-- end #navigation_bar -->
 		
 		<div id="body" class="cf">
