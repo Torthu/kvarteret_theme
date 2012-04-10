@@ -54,9 +54,7 @@ get_header(); ?>
 			<div class="six_cols center cf share">
 				<h2>Del</h2>
 				<a href="https://www.facebook.com/sharer.php?u=<?php echo urlencode(get_permalink()); ?>&t=<?php echo urlencode(get_the_title()); ?>" class="facebook_share" title="Del på Facebook">Del på facebook</a>
-				<a href="http://twitter.com/share?url=<?php echo urlencode(get_permalink()); ?>&text=<?php the_title(); ?>&via=Kvarteret" target="_blank" onClick="tweetpopup(); return false;" rel="nofollow" class="twitter_share" alt="Del på Twitter">Tweet</a>
-				<!--<a href="https://twitter.com/share" class="twitter-share-button twitter_share" data-via="Kvarteret" data-lang="no">Tweet</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
+				<a href="http://twitter.com/share?url=<?php echo urlencode(get_permalink()); ?>&text=<?php the_title(); ?>&via=Kvarteret" target="_blank" rel="nofollow" class="twitter_share" alt="Del på Twitter">Del på Tweet</a>
 			</div>
 
 
@@ -65,8 +63,8 @@ get_header(); ?>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-    //url = "<?php echo get_permalink(); ?>";
-	var url = "http://kvarteret.no";
+    url = "<?php echo get_permalink(); ?>";
+	//var url = "http://kvarteret.no";
 	// Get number of Tweets for this article
 	$.getJSON('http://api.tweetmeme.com/url_info.jsonc?url='+url+'&callback=?',
     function(data) {
@@ -89,13 +87,6 @@ $(document).ready(function() {
         $('.facebook_share').append('<div class="count">' + shares + '</div>');
 	});
 });	
-
-
-/*function tweetpopup() {
-
-	window.open( "http://twitter.com/share?url=<?php echo urlencode(get_permalink()); ?>&text=the%20text%20you%20wish%20the%20tweet%20to%20say&count=none/", "tweet", "height=450,width=550,resizable=1" ) 
-
-}*/
 </script>
 
 <?php get_footer(); ?>

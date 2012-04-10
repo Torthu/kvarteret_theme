@@ -1186,8 +1186,11 @@ px      68    160    252    */
 							background:transparent;
 							color: inherit;
 						}
-	.btn_navbar_toggle {
+	.navbar_toggle {
 		display:block;
+		background: url(images/mobile-nav-toggle.png) center center no-repeat;
+		text-indent: -9999px;
+		height: 35px;
 	}
 	.nav-collapse {
 	overflow: hidden;

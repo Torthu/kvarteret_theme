@@ -104,9 +104,9 @@
 		</div><!-- end #header -->
 		
 		<div id="navigation_bar" class="cf" role="navigation">
-			<button class="btn btn_navbar_toggle" data-toggle="collapse" data-target=".nav-collapse">
+			<a class="navbar_toggle" data-toggle="collapse" data-target=".nav-collapse">
 				Nav
-			</button>
+			</a>
 			<div class="nav-collapse">
 				<?php wp_nav_menu( array( 'container_class' => 'left navigation', 'menu' => 'Nav left' ) ); ?>
 				<?php wp_nav_menu( array( 'container_class' => 'right navigation', 'menu' => 'Nav right' ) ); ?>
