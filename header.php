@@ -61,12 +61,7 @@
 			})();
 		</script>
 		
-		<script type="text/javascript">
-			var language = window.navigator.userLanguage || window.navigator.language;
-			//if(language != 'nb' && language != 'no' && language != 'nn-no' && language != 'nb-no' || false) {
-				$("#english_language").prepend("hjghg<div class="message small">English speaking user?</div>");
-			//}
-		</script>
+
 	</head>
 
 	<body <?php body_class(); ?>>

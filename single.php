@@ -8,14 +8,6 @@
  */
 
 get_header(); ?>
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/nb_NO/all.js#xfbml=1";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
 	<div class="all_cols content" role="main">
 		<?php if(has_post_thumbnail()) { ?>
 			<div class="wrapper post_thumbnail">
@@ -32,9 +24,9 @@ get_header(); ?>
 
 			<div class="two_cols left date meta text_right">
 				<div class="right date_wrap">
-					<span class="bebas day huge right">11</span>
-					<span class="month">Mar</span>
-					<span class="year">2012</span>
+					<span class="bebas day huge right"><?php the_time('d'); ?></span>
+					<span class="month"><?php the_time('M'); ?></span>
+					<span class="year"><?php the_time('Y'); ?></span>
 				</div>
 			</div>
 			<div class="two_cols right">
@@ -61,27 +53,42 @@ get_header(); ?>
 			</div>
 			<div class="six_cols center cf share">
 				<h2>Del</h2>
-				<div class="fb-like" style="float:left;" data-send="false" data-layout="button_count" data-width="79" data-show-faces="true"></div>
-				<a href="https://twitter.com/share" class="twitter-share-button" style="float:left;" data-via="Kvarteret" data-lang="no">Tweet</a>
+				<a href="https://www.facebook.com/sharer.php?u=<?php echo urlencode(get_permalink()); ?>&t=<?php echo urlencode(get_the_title()); ?>" class="facebook_share" title="Del på Facebook">Del på facebook</a>
+				
+				<a href="https://twitter.com/share" class="twitter-share-button twitter_share" style="float:left;" data-via="Kvarteret" data-lang="no">Tweet</a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			</div>
-				<?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
-				<div id="author" class="six_cols center article author content">
-					<h2><?php echo $author ?></h2>
-					<div id="author-avatar">
-						<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentyten_author_bio_avatar_size', 60 ) ); ?>
-					</div><!-- #author-avatar -->
-						<div id="author-description">
-							<h2><?php printf( esc_attr__( 'About %s', 'twentyten' ), get_the_author() ); ?></h2>
-							<?php the_author_meta( 'description' ); ?>
-						
-
-					</div><!-- #author-description -->
-				</div>
-				<?php endif; ?>
 
 
 <?php endwhile; // end of the loop. ?>
 
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+    //url = "<?php echo get_permalink(); ?>";
+	var url = "http://kvarteret.no";
+	// Get number of Tweets for this article
+	$.getJSON('http://api.tweetmeme.com/url_info.jsonc?url='+url+'&callback=?',
+    function(data) {
+		var tweets = 0;
+		if('story' in data) {
+			tweets = data.story.url_count;
+			console.log('tweets' + data.story.url_count);
+		}
+        $('.twitter_share').after(tweets);
+	});
+	
+	// Get number of Likes (Shares + likes + mentions)
+	$.getJSON('http://graph.facebook.com/?id='+url+'&callback=?',
+    function(data) {
+		var shares = 0;
+		if('shares' in data) {
+			shares = data.shares;
+			console.log('Likes' + data.shares);
+		}
+        $('.facebook_share').append('<div class="count">' + shares + '</div>');
+	});
+});	
+</script>
+
 <?php get_footer(); ?>

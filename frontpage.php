@@ -21,7 +21,7 @@ add_filter('excerpt_length', 'custom_excerpt_length');
     <div class="left six_cols content">
       <?php
         global $post;
-        $featured = get_posts('numberposts=5&category_name=featured');
+        $featured = get_posts('numberposts=3&category_name=featured');
         $current_news = get_posts('numberposts=10&category_name=aktuelt,featured');
         ?>
 		<div id="featured_news">

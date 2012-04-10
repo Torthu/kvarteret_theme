@@ -256,10 +256,14 @@ px      68    160    252    344    436    528    620    712    804    896    */
 			content:'';
 		}
 		
-	.two_cols, .three_cols, .four_cols, .six_cols, .all_cols, h1, h2, h3 {
+	.two_cols, .three_cols, .four_cols, .six_cols, .ten_cols, h1, h2, h3 {
 		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 		-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 		box-sizing: border-box;         /* Opera/IE 8+ */
+	}
+	
+	.two_cols, .three_cols, .four_cols, .six_cols, .ten_cols {
+		padding: 12px;
 	}
 	
 	.two_cols {
@@ -633,13 +637,35 @@ px      68    160    252    344    436    528    620    712    804    896    */
 			
 		}
 		
+		a.helhus {
+			background: #E5190F;
+			color: #fff;
+			display: block;
+			padding: 12px;
+			border-radius: 5px;
+			position: relative;
+		}
+			a.helhus:hover {
+				background: #A6160E;
+			}
+			a.helhus:after {
+				border-top: 8px solid transparent;
+				border-bottom: 8px solid transparent;
+				border-left: 8px solid #fff;
+				position: absolute;
+				right: 12px;
+				top: 50%;
+				margin-top: -8px;
+				content:'';
+			}
+		
 		
 		/* single post */
 		.wrapper.post_thumbnail {
 			position:relative;
 		}
 		
-		.current_news img, .wrapper.post_thumbnail img {
+		.single .wrapper.post_thumbnail img {
 			width: 100% !important;
 			height: auto !important;
 		}
@@ -679,12 +705,60 @@ px      68    160    252    344    436    528    620    712    804    896    */
 			margin-bottom: 24px;
 		}
 		.single .share {
-			margin-bottom: 24px;
+			margin-bottom: 24px !important;
+			background-color: #3f3f3f;
+			border-radius: 5px;
+			padding: 0;
 		}
 		.single .share h2, .single .follow h2 {
+			position: absolute;
+			right: 50%;
+			margin-right: -10px;
 			color: #fff;
-			background: #3F3F3F;
-			text-align:center;
+			margin-bottom: 0;
+		}
+		
+		.facebook_share {
+			float:left;
+			height: 48px;
+			width: 48px;
+			background: url(images/facebook-share.png) no-repeat 20px bottom #35619E;
+			border-radius: 5px;
+			text-indent: -9999px;
+			position: relative;
+		}
+			.facebook_share:hover {
+				background-color: #284977;
+			}
+			.facebook_share .count {
+				position: absolute;
+				left: 55px;
+				top: 50%;
+				margin-top: -10px;
+				padding: 2px;
+				background: #fff;
+				border-radius: 2px;
+				color: #333;
+				line-height: 16px;
+				text-indent: 0;
+			}
+				.facebook_share .count:before {
+					border-right: 5px solid #fff;
+					border-top: 5px solid transparent;
+					border-bottom: 5px solid transparent;
+					content: ' ';
+					position: absolute;
+					left: -5px;
+					top: 50%;
+					margin-top: -5px;
+				}
+		
+		.twitter_share {
+			float:right;
+			height: 24px;
+			width: 24px;
+			background: #35619E;
+			border-radius: 5px;
 		}
 		
 		.date_wrap {
@@ -850,6 +924,16 @@ px      68    160    252    344    436    528    620    712    */
 		width: 100%;
 		height: 250px;
 	}
+	.wrapper.post_thumbnail img {
+			width: 100% !important;
+			min-width: 664px;
+			min-height: 409px;
+			height: auto !important;
+		}
+	.current_news img, .wrapper.post_thumbnail img {
+		width: 100% !important;
+		height: auto !important;
+	}
 	
 	
 	
@@ -887,15 +971,56 @@ cols    1     2      3
 px      68    160    252    */
 
 @media only screen and (max-width: 767px) {
+	html {
+		background: #000;
+	}
 	
 	body {
 		width: 100%;
-		padding: 12px;
+		padding: 0px;
 		padding-bottom: 48px;
 		
 		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 		-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 		box-sizing: border-box;         /* Opera/IE 8+ */
+	}
+	
+	/* 	Font settings
+		------------- */
+	.gigantic {
+		font-size: 50px;
+		line-height: 120px;
+		letter-spacing: -2px;
+	}
+
+	h1, h2, h3, h4, .opening_title, .bebas {
+		font-family: 'BebasNeueRegular', Tahoma, sans-serif;
+
+	}
+
+	.huge, h1 {
+		font-size: 40px;
+		line-height: 72px;
+		letter-spacing: -1px;
+		margin-bottom: 30px;
+	}
+
+	.large, h2 {
+		font-size: 30px;
+		line-height: 48px;
+		margin-bottom: 20px;
+	}
+
+	.bigger, h3 {
+		font-size: 25px;
+		line-height: 36px;
+		margin-bottom: 15px;
+	}
+
+	.big, h4 {
+		font-size: 22px;
+		line-height: 30px;
+		margin-bottom: 10px;
 	}
 	
 	/* 	Cols 
@@ -914,6 +1039,9 @@ px      68    160    252    */
 	.three_cols {
 		width: 100%;
 		padding: 12px 12px;
+	}
+	.two_cols {
+		width: 50%;
 	}
 	
 	/* 	Header styles 
@@ -1049,7 +1177,64 @@ px      68    160    252    */
 	height: 0;
 	}
 	
-
-}
+	/* Single post */
+	.wrapper.post_thumbnail {
+		position:static;
+	}
+		
+		.single .attachment-full-thumbnail {
+			position: relative;
+			z-index: 1;
+			margin: 0 auto;
+			display: block;
+		}
+		
+		.single h1.post_thumbnail {
+			width: 100%;
+			position:static;
+		}
+	
+	
+	/* 	Programsiden
+		------------ */
+	
+	/* eventlisten */
+	.dew_agenda {
+	}
+	
+	/* datooverskrifter */
+	.agenda_box {
+		display:block;
+		float:none;
+		padding: 12px;
+		background: black;
+		color: #fff;
+	}
+		.agenda_day_name {
+			background: none;
+			float:none;
+			display: inline;
+		}
+		.agenda_day_number {
+			background: none;
+			float:none;
+			display: inline;
+		}
+		.agenda_month_name {
+			background: none;
+			float:none;
+			display: inline;
+		}
+	
+	/* eventlister for enkeltdager */
+	.event_date_list {
+	}
+	
+		/* enkeltevent i listen */
+		.agenda_compact_event_wrapper {
+		}
+			.agenda_compact_event_details {
+			}
+	
 	
 }

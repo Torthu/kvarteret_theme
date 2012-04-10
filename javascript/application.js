@@ -134,3 +134,7 @@
   })
 
 }( window.jQuery );
+
+jQuery(document).ready(function() {
+	jQuery("#featured_news").carousel( { direction: "vertical", autoSlide: true, pagination: true, autoSlideInterval: 8000 }  );
+});
