@@ -54,9 +54,9 @@ get_header(); ?>
 			<div class="six_cols center cf share">
 				<h2>Del</h2>
 				<a href="https://www.facebook.com/sharer.php?u=<?php echo urlencode(get_permalink()); ?>&t=<?php echo urlencode(get_the_title()); ?>" class="facebook_share" title="Del på Facebook">Del på facebook</a>
-				
-				<a href="https://twitter.com/share" class="twitter-share-button twitter_share" style="float:left;" data-via="Kvarteret" data-lang="no">Tweet</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				<a href="http://twitter.com/share?url=<?php echo urlencode(get_permalink()); ?>&text=<?php the_title(); ?>&via=Kvarteret" target="_blank" onClick="tweetpopup(); return false;" rel="nofollow" class="twitter_share" alt="Del på Twitter">Tweet</a>
+				<!--<a href="https://twitter.com/share" class="twitter-share-button twitter_share" data-via="Kvarteret" data-lang="no">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
 			</div>
 
 
@@ -75,7 +75,7 @@ $(document).ready(function() {
 			tweets = data.story.url_count;
 			console.log('tweets' + data.story.url_count);
 		}
-        $('.twitter_share').after(tweets);
+        $('.twitter_share').append('<div class="count">' + tweets + '</div>');
 	});
 	
 	// Get number of Likes (Shares + likes + mentions)
@@ -89,6 +89,13 @@ $(document).ready(function() {
         $('.facebook_share').append('<div class="count">' + shares + '</div>');
 	});
 });	
+
+
+/*function tweetpopup() {
+
+	window.open( "http://twitter.com/share?url=<?php echo urlencode(get_permalink()); ?>&text=the%20text%20you%20wish%20the%20tweet%20to%20say&count=none/", "tweet", "height=450,width=550,resizable=1" ) 
+
+}*/
 </script>
 
 <?php get_footer(); ?>

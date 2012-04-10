@@ -718,6 +718,18 @@ px      68    160    252    344    436    528    620    712    804    896    */
 			margin-bottom: 0;
 		}
 		
+		.facebook_share .count, .twitter_share .count {
+			position: absolute;
+			top: 50%;
+			margin-top: -10px;
+			padding: 2px;
+			background: #fff;
+			border-radius: 2px;
+			color: #333;
+			line-height: 16px;
+			text-indent: 0;
+		}
+		
 		.facebook_share {
 			float:left;
 			height: 48px;
@@ -731,16 +743,7 @@ px      68    160    252    344    436    528    620    712    804    896    */
 				background-color: #284977;
 			}
 			.facebook_share .count {
-				position: absolute;
 				left: 55px;
-				top: 50%;
-				margin-top: -10px;
-				padding: 2px;
-				background: #fff;
-				border-radius: 2px;
-				color: #333;
-				line-height: 16px;
-				text-indent: 0;
 			}
 				.facebook_share .count:before {
 					border-right: 5px solid #fff;
@@ -755,12 +758,26 @@ px      68    160    252    344    436    528    620    712    804    896    */
 		
 		.twitter_share {
 			float:right;
-			height: 24px;
-			width: 24px;
-			background: #35619E;
+			height: 48px;
+			width: 48px;
+			background: url(images/twitter-share.png) no-repeat center center #3C8FC9;
 			border-radius: 5px;
+			text-indent: -9999px;
+			position: relative;
 		}
-		
+			.twitter_share .count {
+				right: 55px;
+			}
+				.twitter_share .count:before {
+					border-left: 5px solid #fff;
+					border-top: 5px solid transparent;
+					border-bottom: 5px solid transparent;
+					content: ' ';
+					position: absolute;
+					right: -5px;
+					top: 50%;
+					margin-top: -5px;
+				}
 		.date_wrap {
 			width: 90px;
 		}
