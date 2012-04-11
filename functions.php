@@ -76,9 +76,6 @@ if ( ! function_exists( 'twentyten_setup' ) ):
  */
 function twentyten_setup() {
 
-	// This theme styles the visual editor with editor-style.css to match the theme style.
-	add_editor_style();
-
 	// This theme uses post thumbnails
 	add_theme_support( 'post-thumbnails' );
 
@@ -114,6 +111,80 @@ function twentyten_setup() {
 	
 }
 endif;
+
+/**
+ * Register our sidebars and widgetized areas.
+ *
+ * @since Kvarteret 2.0
+ */
+function dak_widgets_init() {
+	// Sidebar used on frontpage
+	register_sidebar( array(
+		'name' => __( 'Forside', 'dak' ),
+		'id' => 'frontpage',
+		'description' => __( 'Sidebar som vises på forsiden', 'dak' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h2>',
+		'after_title' => '</h2>',
+	) );
+	
+	// Sidebar used on program
+	register_sidebar( array(
+		'name' => __( 'Program', 'dak' ),
+		'id' => 'program',
+		'description' => __( 'Sidebar som vises på programsiden', 'dak' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h2>',
+		'after_title' => '</h2>',
+	) );
+	
+	// Sidebar used on samarbeidspartnere
+	register_sidebar( array(
+		'name' => __( 'Samarbeidspartnere', 'dak' ),
+		'id' => 'samarbeidspartnere',
+		'description' => __( 'Sidebar som vises på samarbeidspartnere-sider', 'dak' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h2>',
+		'after_title' => '</h2>',
+	) );
+	
+	// Sidebar used on arrangere
+	register_sidebar( array(
+		'name' => __( 'Arrangere', 'dak' ),
+		'id' => 'arrangere',
+		'description' => __( 'Sidebar som vises på sider som omhandler å arrangere', 'dak' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h2>',
+		'after_title' => '</h2>',
+	) );
+	
+	// Sidebar used on bli med
+	register_sidebar( array(
+		'name' => __( 'Bli med', 'dak' ),
+		'id' => 'bli-med',
+		'description' => __( 'Sidebar som vises på rekrutteringssider', 'dak' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h2>',
+		'after_title' => '</h2>',
+	) );
+	
+	// Sidebar used on om kvarteret
+	register_sidebar( array(
+		'name' => __( 'Om Kvarteret', 'dak' ),
+		'id' => 'om-kvarteret',
+		'description' => __( 'Sidebar som vises på "Om Kvarteret" og undersider', 'dak' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h2>',
+		'after_title' => '</h2>',
+	) );
+}
+add_action( 'widgets_init', 'dak_widgets_init' );
 
 /**
  * Get the caption of article thumbnails (featured image)
@@ -263,31 +334,6 @@ function twentyten_comment( $comment, $args, $depth ) {
 }
 endif;
 
-/**
- * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.
- *
- * To override twentyten_widgets_init() in a child theme, remove the action hook and add your own
- * function tied to the init hook.
- *
- * @since Kvarteret 1.0
- * @uses register_sidebar
- */
-function twentyten_widgets_init() {
-	// Area 1, located at the top of the sidebar.
-	register_sidebar( array(
-		'name' => __( 'Sidebar', 'twentyten' ),
-		'id' => 'primary-widget-area',
-		'description' => __( 'The primary widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-	
-	// egen sidebar for pages, posts?
-}
-/** Register sidebars by running twentyten_widgets_init() on the widgets_init hook. */
-add_action( 'widgets_init', 'twentyten_widgets_init' );
 
 /**
  * Removes the default styles that are packaged with the Recent Comments widget.

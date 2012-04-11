@@ -104,7 +104,7 @@
 		</div><!-- end #header -->
 		
 		<div id="navigation_bar" class="cf" role="navigation">
-			<a class="navbar_toggle" data-toggle="collapse" data-target=".nav-collapse">
+			<a class="btn_navbar_toggle" data-toggle="collapse" data-target=".nav-collapse">
 				Nav
 			</a>
 			<div class="nav-collapse">

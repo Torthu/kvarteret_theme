@@ -39,22 +39,22 @@ get_header(); ?>
 					$event = new DEW_event($rawEvent);
 					if($event->hasPrimaryPicture()) {
 						$eventPic = DEW_tools::getPicture($event->getPrimaryPicture(), 960, 400);
-					}
-					
-					echo '<img src="'.home_url().'/wp-content/uploads'.$eventPic['relative'].'" alt="" />';
-				?>
+					?>
+						<div class="wrapper post_thumbnail">
+							<img src="<?=home_url();?>/wp-content/uploads<?=$eventPic['relative'];?>" alt="" />';
+							<h1 class="article post_thumbnail"><?=$title;?></h1>
+						</div>
+					<?php } else { ?>
+						<h1><?php echo $title; ?></h1>
+					<?php } ?>
 				
-				<h1><?php echo $title; ?></h1>
-				
-				<div id="post-<?php the_ID(); ?>" class="left six_cols content">
+				<div id="post-<?php the_ID(); ?>" class="left six_cols content"><!-- # event page -->
 
-<?php if ( $event_id > 0 ): ?>
-<!-- # event page -->
+					<?php if ( $event_id > 0 ): ?>
+						<?php echo dew_fullevent_shortcode_handler (array('event_id' => $event_id, 'no_title' => true, 'exclude_metadata' => true)) ?>
 
-					<?php echo dew_fullevent_shortcode_handler (array('event_id' => $event_id, 'no_title' => true, 'exclude_metadata' => true)) ?>
-
-<!-- # end event page -->
-<?php endif ?>
+					<!-- # end event page -->
+					<?php endif ?>
 				</div><!-- end #left_content -->
 
 				<div class="right four_cols widget" role="complementary">

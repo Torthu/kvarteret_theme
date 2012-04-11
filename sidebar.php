@@ -8,30 +8,65 @@
  */
 ?>
 
-<div class="right widget four_cols" role="complementary">
+<?php if(is_front_page()) : ?>
+	<div class="right widget four_cols" role="complementary">
+		<?php // Get next Helhus
+			$dew_options = DEW_Management::getOptions();
+			$client = new eventsCalendarClient ($dew_options['eventServerUrl'], null, $dew_options['cache'], $dew_options['cacheTime']);
 
-<?php
-	/* When we call the dynamic_sidebar() function, it'll spit out
-	 * the widgets for that widget area. If it instead returns false,
-	 * then the sidebar simply doesn't exist, so we'll hard-code in
-	 * some default sidebar stuff just in case.
-	 */
-	 
-	echo '<ul class="widget_ul">';
-	if ( ! dynamic_sidebar( 'primary-widget-area' ) ) : ?>
-	</ul>
+			$festivalSearch = $client->festivalList(array('titleContains' => 'helhus', 'limit' => 1));
 
-		<?php endif; // end primary widget area ?>
-		</div><!-- #primary .widget-area -->
+			if (!empty($festivalSearch->data[0]->id)) { 
+				$helhus = $festivalSearch->data[0];
+				print_r($festivalSearch);
+		?>
 
-<?php
-	// A second sidebar for widgets, just because.
-	if ( is_active_sidebar( 'secondary-widget-area' ) ) : ?>
+				<a href="<?php echo $helhus->url; ?>" class="large bebas helhus">Neste Helhus<br /><small><?php echo date("D, d M Y", strtotime($helhus->startDate)); ?> CC: <?php echo $helhus->covercharge; ?></small></a>
+				
+			<?php } // startDate, covercharge, url
+		?>
+		<ul class="widget_ul">
+			<?php dynamic_sidebar( 'frontpage' ); ?>
+		</ul>
+	</div>
+<?php endif; ?>
 
-		<div id="secondary" class="widget-area" role="complementary">
-			<ul class="widget_ul">
-				<?php dynamic_sidebar( 'secondary-widget-area' ); ?>
-			</ul>
-		</div><!-- #secondary .widget-area -->
+<?php if(is_page('arrangere') || in_array(499, get_post_ancestors($post))) : ?>
+	<div class="right widget four_cols" role="complementary">
+		<ul class="widget_ul">
+			<?php dynamic_sidebar( 'arrangere' ); ?>
+		</ul>
+	</div>
+<?php endif; ?>
 
+<?php if(is_page('bli-med') || in_array(13, get_post_ancestors($post))) : ?>
+	<div class="right widget four_cols" role="complementary">
+		<ul class="widget_ul">
+			<?php dynamic_sidebar( 'bli-med' ); ?>
+		</ul>
+	</div>
+<?php endif; ?>
+
+<?php if(is_page('samarbeidspartnere') || in_array(15, get_post_ancestors($post))) : ?>
+	<div class="right widget four_cols" role="complementary">
+		<ul class="widget_ul">
+			<?php dynamic_sidebar( 'samarbeidspartnere' ); ?>
+		</ul>
+	</div>
+<?php endif; ?>
+
+<?php if(is_page('om-kvarteret') || in_array(19, get_post_ancestors($post))) : ?>
+	<div class="right widget four_cols" role="complementary">
+		<ul class="widget_ul">
+			<?php dynamic_sidebar( 'samarbeidspartnere' ); ?>
+		</ul>
+	</div>
+<?php endif; ?>
+
+<?php if(is_page('program')) : ?>
+	<div class="right widget four_cols" role="complementary">
+		<ul class="widget_ul">
+			<?php dynamic_sidebar( 'program' ); ?>
+		</ul>
+	</div>
 <?php endif; ?>
